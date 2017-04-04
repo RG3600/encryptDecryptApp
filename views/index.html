@@ -1,0 +1,26 @@
+<html>
+   <head>
+      <title>Encrypt Decrypt Page</title>
+   </head>
+   
+   <body>
+      <form action="/generate_key" method = "GET">
+         <input type="text" name="key" value="<%= key %>" />
+         <input type="submit" id="submit" value="Generate Key"/>
+      </form>
+      <form action="/encrypt_msg" method = "GET">
+         <textarea rows="4" cols="40" id="message" placeholder="Write something.. " name="msg_txt" value="<%= message %>" autofocus></textarea></br></br>
+		 <input type="submit" id="submit" value="Encrypt"/>
+      </form>
+      <div>
+        <p>Encrypted Message : <%= encryptedMsg %></p>
+      </div>
+       <form action="/decrypt_msg" method = "GET">
+         <textarea rows="4" cols="40" id="decmessage" placeholder="Message to Decrypt.. " name="decryptmsg_txt" value="<%= encryptedMsg %>" autofocus></textarea></br></br>
+		     <input type="submit" id="submit" value="Decrypt"/>
+      </form>
+      <div>
+        <p>Decrypted Message : <%= decryptMsg %></p>
+      </div>
+   </body>
+</html>
