@@ -53,29 +53,26 @@ function encryptMessage(message, key){
     for(var i = 0; i < message.length; ++i){
       //Algorithm for encoding each character in the string
       //Character ASCII code * Squareroot of Position of char in the string * key
-	  encodeChars = message.charCodeAt(i) * Math.pow( i + 1, i + 1)  * key  + ';' ;
-      encryptMessage += encodeChars ;
+	  encodeChars = message.charCodeAt(i) * Math.pow( i + 1, i + 1)  * key + ";" ;
+      encryptMessage += encodeChars;
       
-      console.log("encodeChar: " + encodeChars);
     }
-    //encryptMessage = atob(encryptMessage);
     console.log("encryptMessage: " + encryptMessage);
-    console.log("DECRYPTED: " + btoa(encryptMessage));
     return encryptMessage;
 };
 
 function decryptMessage(encryptedMessage, key){
     var decryptMessage = '';
+    var decodeChar = '';
     //Decode a string in base64
    // var decryptMessagefromBase64 = btoa(encryptedMessage);
    // console.log("decryptMessagefromBase64: " + decryptMessagefromBase64);
     var splitCharsArray = encryptedMessage.split(';');
-    for (var i in splitCharsArray) {
-        var decodeChar = '';
+    for(var i = 0; i < splitCharsArray.length; ++i) {
+        decodeChar = '';
         console.log("i:: " + i);
-        console.log("splitCharsArray: " + splitCharsArray[i]);
-        decodeChar = (splitCharsArray[i]/key)/Math.pow(i + 1, i + 2);
-        console.log("decodeChar: " + decodeChar);
+        console.log("key: " + key);
+        decodeChar = splitCharsArray[i]/key/Math.pow(i + 1, i + 1);
         decryptMessage += String.fromCharCode(decodeChar);
     }
     return decryptMessage;
